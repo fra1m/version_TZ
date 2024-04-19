@@ -1,0 +1,45 @@
+services:
+  db:
+    container_name: db_gerion_test
+    image: postgres:16.2-alpine3.19
+    restart: always
+    ports:
+      - 5432:5432
+    env_file:
+      - .development.env
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    # healthcheck:
+    #   test: ["CMD-SHELL", "pg_isready -U postgres"]
+    #   interval: 5s
+    #   timeout: 5s
+    #   retries: 5
+
+  redis: 
+    container_name: redis_gerion_test
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    command: /bin/sh -c "redis-server --requirepass $$REDIS_PASS"
+    env_file:
+      - .development.env
+    volumes:
+      - ./redis:/data
+
+  gerion:
+    container_name: gerion
+    build:
+     context: .
+    env_file:
+      - .development.env
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: >
+      sh -c "yarn migration; echo \"Migration\" && yarn migrate; echo \"Migrate\" && yarn dev"
+    depends_on:
+      - db
+      - redis
+    restart: always
