@@ -9,13 +9,13 @@ https://www.docker.com
 1. Склонировать репозиторий с api
 
    ```
-   git clone https://github.com/fra1m/Books_test_zadanie.git
+   git clone git@github.com:fra1m/version_TZ.git
    ```
 
 2. Перейдите в папку где лежит файл docker-compose.yml
 
    ```
-   cd
+   cd version_TZ
    ```
 
 3. Сбилдите контейнер
@@ -49,7 +49,7 @@ https://www.docker.com
 
 - `POST http://localhost:3000/user?user=имя_пользователя` – добавление нового пользователя в базу данных.
 - `GET POST http://localhost:3000/user?user=имя_пользователя` – получение пользователя
-- `PATCH http://localhost:3000/user/email` – добавление пользователя
+- `PATCH http://localhost:3000/user/email` – добавление почтового адреса пользователя
 
 # Swagger
 
