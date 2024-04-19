@@ -16,13 +16,15 @@ export class UserController {
     return this.userService.getUserByName(user);
   }
 
-  @ApiOperation({ summary: 'Сохранение почты пользователя' })
+  @ApiOperation({ summary: 'Сохранение пользователя' })
   @ApiResponse({ status: 200, type: UserEntity })
   @Post()
   saveUser(@Query('user') user: string) {
     return this.userService.saveUser({ user });
   }
 
+  @ApiOperation({ summary: 'Сохранение почты пользователя' })
+  @ApiResponse({ status: 200, type: UserEntity })
   @Patch('/email')
   saveEmail(@Body() updateUserDto: UpdateUserDto) {
     return this.userService.saveUserEmail(updateUserDto);

@@ -1,73 +1,56 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Для работы с преоктом необходимо установить Docker
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ yarn install
+```
+https://www.docker.com
 ```
 
-## Running the app
+# Для запуска проекта, необходимо выполнить следующие шаги:
 
-```bash
-# development
-$ yarn run start
+1. Склонировать репозиторий с api
 
-# watch mode
-$ yarn run start:dev
+   ```
+   git clone https://github.com/fra1m/Books_test_zadanie.git
+   ```
 
-# production mode
-$ yarn run start:prod
-```
+2. Перейдите в папку где лежит файл docker-compose.yml
 
-## Test
+   ```
+   cd
+   ```
 
-```bash
-# unit tests
-$ yarn run test
+3. Сбилдите контейнер
+   ```
+   docker-compose up --build
+   ```
+   или в фоновом режиме если не нужен логгер
+   ```
+   docker-compose up --build -d
+   ```
 
-# e2e tests
-$ yarn run test:e2e
+# Тест через Postman
 
-# test coverage
-$ yarn run test:cov
-```
+1. Откройте Postman
+2. Используйте Socket.io
+3. Вставьте ссылку из логера или используйте
 
-## Support
+   ```
+   http://localhost:3000
+   ```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+4. Для получения цены биткоина в USD: выберете `Events` и добавте событие `server`
+5. Отправьте ваше ID(any) для сохранения вас в базу данных как пользователя.
+6. Теперь в дальнейшем, если захотите получить цену биткоина используйте ваше ID(any)
 
-## Stay in touch
+### Премечание
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+1. Используйте реальный почтовый адрес для получения изменения курса на вашу почту.
 
-## License
+# REST API - CRUD операции у User
 
-Nest is [MIT licensed](LICENSE).
+- `POST http://localhost:3000/user?user=имя_пользователя` – добавление нового пользователя в базу данных.
+- `GET POST http://localhost:3000/user?user=имя_пользователя` – получение пользователя
+- `PATCH http://localhost:3000/user/email` – добавление пользователя
+
+# Swagger
+
+- `http://localhost:3000/swagger`
